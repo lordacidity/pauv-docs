@@ -1,11 +1,69 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Documentation",
+  "name": "Pauv",
   "colors": {
-    "primary": "#0D9373"
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373"
   },
+  "favicon": "/favicon.svg",
   "navigation": {
-    "groups": []
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "how-it-works",
+          "getting-started"
+        ]
+      },
+      {
+        "group": "Platform",
+        "pages": [
+          "platform/usdp-and-funds",
+          "platform/trading-pvs",
+          "platform/for-talent"
+        ]
+      },
+      {
+        "group": "Legal",
+        "pages": [
+          "legal/terms-of-service",
+          "legal/privacy-policy",
+          "legal/refund-policy",
+          "legal/aml-compliance",
+          "legal/regulatory-framework"
+        ]
+      },
+      {
+        "group": "Support",
+        "pages": [
+          "support"
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@pauv.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Go to Pauv",
+      "href": "https://pauv.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/lordacidity/pauv-docs"
+    }
   }
 }
