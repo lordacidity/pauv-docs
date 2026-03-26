@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "aspen",
   "name": "Pauv",
   "colors": {
     "primary": "#E5C68D",
@@ -49,7 +49,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@pauv.com"
+        "href": "https://pauv.com/contact"
       }
     ],
     "primary": {
@@ -65,5 +65,11 @@
   },
   "appearance": {
     "default": "dark"
-  }
+  },
+  "background": {
+    "color": {
+      "dark": "#000000"
+    }
+  },
+  "description": "The Market for Human Potential"
 }
