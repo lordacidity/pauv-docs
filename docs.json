@@ -7,7 +7,7 @@
     "light": "#E5C68D",
     "dark": "#E5C68D"
   },
-  "favicon": "/images/Picture1.png",
+  "favicon": "/images/facivon.png",
   "navigation": {
     "groups": [
       {
@@ -45,8 +45,8 @@
     ]
   },
   "logo": {
-    "light": "/images/logotransparent.png",
-    "dark": "/images/logotransparent.png"
+    "light": "/images/pauvdocs.png",
+    "dark": "/images/pauvdocs.png"
   },
   "navbar": {
     "links": [
