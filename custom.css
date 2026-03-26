@@ -1,3 +1,7 @@
-.navbar-cta {
+.navbar-cta,
+[class*="navbar"] a[class*="cta"],
+[class*="navbar"] button,
+nav a[href="https://pauv.com"],
+.mint-navbar-cta {
   color: #000000 !important;
 }
