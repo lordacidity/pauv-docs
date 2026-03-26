@@ -1,0 +1,40 @@
+---
+title: Quickstart
+description: "Get up and running with Pauv in minutes"
+---
+
+## Setup
+
+Follow these steps to get started with Pauv.
+
+<Steps>
+  <Step title="Create your account">
+    Sign up at [pauv.com](https://pauv.com) to get access to the dashboard.
+  </Step>
+  <Step title="Install dependencies">
+    Install the required package using your preferred package manager:
+
+    ```bash
+    npm install pauv
+    ```
+  </Step>
+  <Step title="Configure your environment">
+    Create a `.env` file in the root of your project and add your credentials:
+
+    ```bash
+    PAUV_API_KEY=your_api_key_here
+    PAUV_ENV=production
+    ```
+  </Step>
+  <Step title="Start building">
+    Import and initialise Pauv in your application:
+
+    ```js
+    import Pauv from 'pauv';
+
+    const client = new Pauv({ apiKey: process.env.PAUV_API_KEY });
+    ```
+
+    You're ready to start building!
+  </Step>
+</Steps>
