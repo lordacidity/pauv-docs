@@ -44,10 +44,7 @@
       }
     ]
   },
-  "logo": {
-    "light": "/images/pauvdocs.png",
-    "dark": "/images/pauvdocs.png"
-  },
+  "logo": "/images/pauvdocs.png",
   "navbar": {
     "links": [
       {
