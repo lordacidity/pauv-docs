@@ -9,9 +9,9 @@ Pauv Inc. maintains a comprehensive Anti-Money Laundering (AML) and Bank Secrecy
 
 Pauv's closed-loop architecture eliminates the most common avenues for money laundering and fraud by construction:
 
-- **No Peer-to-Peer Transfers.** Users cannot send, gift, or transfer credits or internal tokens to other users.
+- **No Peer-to-Peer Transfers.** Users cannot send, gift, or transfer points or internal tokens to other users.
 - **No Secondary Markets.** Forecasts are opened and closed only against the Dual Curve Model. There is no order book and no user-to-user matching.
-- **No External Portability.** Credits and internal tokens are database entries, not blockchain assets. They cannot be transferred off the Platform.
+- **No External Portability.** Points and internal tokens are database entries, not blockchain assets. They cannot be transferred off the Platform.
 - **Closed-Loop Fiat.** Fiat enters via regulated processors and can only be withdrawn to the same verified bank account the user linked at onboarding.
 - **Sequential Processing.** Every forecast is a single API request processed with database-level row locking. Flash loans, sandwich attacks, MEV extraction, and atomic arbitrage are impossible.
 
@@ -40,7 +40,7 @@ Required for higher-risk activities. Includes document verification (government-
 Pauv is strictly prohibited from conducting business with individuals, entities, or countries sanctioned by the **Office of Foreign Assets Control (OFAC)**.
 
 - Every user is automatically screened against the OFAC SDN list and global PEP lists
-- Screening is **continuous** — user databases are scrubbed against daily watchlist updates
+- Screening is **continuous**: user databases are scrubbed against daily watchlist updates
 - If a match is flagged, the account is immediately blocked, balances frozen, and deposit/withdrawal capabilities disabled
 - Required blocking reports are filed with the U.S. Treasury/OFAC within 10 business days
 

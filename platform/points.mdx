@@ -1,0 +1,60 @@
+---
+title: Points & Funds
+description: "How deposits, points, and withdrawals work on Pauv."
+---
+
+## What Are Points?
+
+**Points** are Pauv's internal, dollar-denominated ledger balance. You use points to open forecasts on the platform.
+
+| Property | Detail |
+|----------|--------|
+| **Exchange rate** | 1 point = $1 USD (always) |
+| **Transferable?** | No, points cannot be sent to other users, platforms, or wallets |
+| **Cryptocurrency?** | No, points are an internal ledger entry, not a blockchain token |
+| **External value?** | None, points have no value outside of pauv.com |
+
+Think of points like casino chips: you exchange real dollars for them to use inside the platform, and you can exchange them back at any time.
+
+## Depositing Funds
+
+When you deposit USD into Pauv:
+
+1. Your funds are processed through **Finix** (ACH/card processor) and **Soap Payments** (security gateway).
+2. Your USD is deposited into a **regulated For Benefit Of (FBO) custodial account** at a regulated U.S. partner bank.
+3. Your Pauv account is credited one-for-one in points.
+
+<Warning>
+  Pauv **never** commingles user funds with corporate operating funds. Your dollars are held separately in regulated custodial accounts at all times.
+</Warning>
+
+## Using Points
+
+All forecasting on Pauv happens in points:
+
+- **Open a forecast**: Commit points to the positive or negative curve of a public figure's NPSI.
+- **Close a forecast**: Receive points back at the current curve value.
+- **Instant settlement**: Because points are an internal ledger entry, forecasts open and close instantly without waiting for external payment rails.
+
+## Withdrawing Funds
+
+You can convert your points back to USD and withdraw at any time:
+
+1. Initiate a withdrawal request through the platform.
+2. Pauv performs a standard ledger reconciliation to verify your account history and balance.
+3. Funds are remitted to your **linked bank account** within **1–2 business days**.
+
+<Note>
+  Withdrawals go back to the same verified bank account you used to deposit. You cannot withdraw to a different account without updating your verification.
+</Note>
+
+## Custody & Security
+
+- **FBO accounts**: All user funds are held in For Benefit Of custodial accounts at regulated U.S. depository institutions.
+- **No commingling**: User funds are never mixed with Pauv's operational accounts.
+- **Encryption**: All financial records are protected with AES-256 encryption in transit and at rest.
+- **Audit trail**: Every deposit, forecast, and withdrawal is recorded with tamper-resistant logging.
+
+## Interest on Custodial Funds
+
+Funds held in FBO custodial accounts earn interest while they sit on the platform. Per the [Terms of Service](/legal/terms-of-service), any interest or earnings on pooled custodial balances are the sole property of Pauv Inc. Users have no claim to these earnings. This is a secondary revenue stream that scales with total deposits on the platform.

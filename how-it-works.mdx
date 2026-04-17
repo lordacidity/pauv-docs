@@ -5,7 +5,7 @@ description: "The NPSI, Positive and Negative Forecasts, and the Dual Curve Mode
 
 ## The Net Public Sentiment Index
 
-Every public figure on Pauv has an **NPSI** — a live, dollar-denominated measure of their cultural relevance. The value is determined solely by forecasting activity on Pauv. There are no social metrics, no algorithmic feeds, and no external data sources pushed into the index.
+Every public figure on Pauv has an **NPSI**: a live, dollar-denominated measure of their cultural relevance. The value is determined solely by forecasting activity on Pauv. There are no social metrics, no algorithmic feeds, and no external data sources pushed into the index.
 
 - **Floor at zero.** No matter how much negative forecasting happens, the NPSI approaches zero asymptotically but never reaches it.
 - **No ceiling.** The NPSI can grow without bound.
@@ -27,7 +27,7 @@ Users interact with Pauv by opening and closing forecasts. A forecast is a direc
     Scan the platform, find a figure whose NPSI you think is under- or overvalued, and form your read.
   </Step>
   <Step title="Open a forecast">
-    Open a Positive Forecast if you think cultural relevance will rise, or a Negative Forecast if you think it will fall. Forecasts settle instantly — no counterparty, no contracts, no outcomes to wait on.
+    Open a Positive Forecast if you think cultural relevance will rise, or a Negative Forecast if you think it will fall. Forecasts settle instantly, with no counterparty, no contracts, and no outcomes to wait on.
   </Step>
   <Step title="Close when ready">
     The NPSI moves in real time as other users open forecasts. Close your forecast whenever the story shifts.
@@ -43,7 +43,7 @@ The **Dual Curve Model** is Pauv's proprietary pricing engine. Every NPSI has tw
 | Positive | Bullish | "Cultural relevance should go up." |
 | Negative | Bearish | "Cultural relevance should go down." |
 
-Each curve has its own pool of cash and its own internal price. The two pools are never combined — a dollar committed to the positive curve stays in the positive pool, and a dollar committed to the negative curve stays in the negative pool. The curves are linked only through the NPSI value.
+Each curve has its own pool of cash and its own internal price. The two pools are never combined. A dollar committed to the positive curve stays in the positive pool, and a dollar committed to the negative curve stays in the negative pool. The curves are linked only through the NPSI value.
 
 <CardGroup cols={2}>
   <Card title="Instant settlement" icon="bolt">
@@ -56,7 +56,7 @@ Each curve has its own pool of cash and its own internal price. The two pools ar
     If the NPSI drifts from what forecasters believe is accurate, there is an incentive to correct it in either direction.
   </Card>
   <Card title="Always solvent" icon="building-columns">
-    Each curve is independently conservative — close proceeds can never exceed open deposits into that curve.
+    Each curve is independently conservative: close proceeds can never exceed open deposits into that curve.
   </Card>
 </CardGroup>
 
@@ -75,7 +75,7 @@ Opening or closing on one curve only affects that curve's state. The two curves 
 
 ### Initial Pricing: Elo-Based Comparative Pricing
 
-When a new NPSI profile is created, its starting value is set through **Elo-Based Comparative Pricing**. The new profile is shown alongside two existing profiles, and participants rank where they think the new one should land — above, between, or below. Iterating thousands of times with random combinations converges on an accurate starting value.
+When a new NPSI profile is created, its starting value is set through **Elo-Based Comparative Pricing**. The new profile is shown alongside two existing profiles, and participants rank where they think the new one should land: above, between, or below. Iterating thousands of times with random combinations converges on an accurate starting value.
 
 If the starting value is slightly off at launch, the market self-corrects: forecasting activity pushes the NPSI to where the market believes it belongs.
 
@@ -89,10 +89,10 @@ Every forecast, whether opening or closing, incurs a flat **1.8%** fee on the gr
 | Good-faith royalty | 0.5% | Set aside for the public figure |
 | **Total** | **1.8%** | **Split** |
 
-- **Opening a forecast** — The 1.8% fee is deducted from the committed amount; the remaining 98.2% enters the bonding curve.
-- **Closing a forecast** — The curve calculates gross proceeds; the 1.8% fee is deducted from those proceeds, and the user receives the net payout.
+- **Opening a forecast**: The 1.8% fee is deducted from the committed amount; the remaining 98.2% enters the bonding curve.
+- **Closing a forecast**: The curve calculates gross proceeds; the 1.8% fee is deducted from those proceeds, and the user receives the net payout.
 
-A round trip in a quiet index (open then close with no other activity) costs approximately **3.57%** — the compounded effect of paying 1.8% on both legs.
+A round trip in a quiet index (open then close with no other activity) costs approximately **3.57%**: the compounded effect of paying 1.8% on both legs.
 
 ### Early-Exit Guardrail
 
@@ -111,7 +111,7 @@ Pauv operates as a fully closed system. This is a deliberate design choice that 
 
 <CardGroup cols={2}>
   <Card title="No peer-to-peer transfers" icon="ban">
-    Credits and internal tokens cannot be sent to other users, wallets, or platforms.
+    Points and internal tokens cannot be sent to other users, wallets, or platforms.
   </Card>
   <Card title="No secondary markets" icon="shield-halved">
     Forecasts are opened and closed only against the Dual Curve Model.
@@ -120,7 +120,7 @@ Pauv operates as a fully closed system. This is a deliberate design choice that 
     Internal tokens are database records, not on-chain assets. They cannot leave Pauv.
   </Card>
   <Card title="No leverage or borrowing" icon="building-columns">
-    Users can only commit credits they have deposited. No margin, no lending.
+    Users can only commit points they have deposited. No margin, no lending.
   </Card>
 </CardGroup>
 
@@ -128,7 +128,7 @@ This architecture makes flash loans, sandwich attacks, MEV extraction, and atomi
 
 ## Conviction
 
-Alongside the headline NPSI value, Pauv exposes **conviction** — the net dollar imbalance between the two pools (positive pool minus negative pool). Conviction measures capital at stake, while the NPSI value measures how the index is priced. The **conviction ratio** (NPSI value divided by starting value) is a unitless multiple — above 1 is bullish, below 1 is bearish, 1 is neutral.
+Alongside the headline NPSI value, Pauv exposes **conviction**: the net dollar imbalance between the two pools (positive pool minus negative pool). Conviction measures capital at stake, while the NPSI value measures how the index is priced. The **conviction ratio** (NPSI value divided by starting value) is a unitless multiple: above 1 is bullish, below 1 is bearish, and 1 is neutral.
 
 <Note>
   Forecasts on the NPSI are not securities, ownership interests, or investment contracts. They are opened and closed against a published algorithm for entertainment and signal purposes only.
