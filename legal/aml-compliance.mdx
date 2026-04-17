@@ -3,16 +3,17 @@ title: AML & BSA Compliance
 description: "Pauv's Anti-Money Laundering and Bank Secrecy Act compliance program."
 ---
 
-Pauv Inc. maintains a comprehensive Anti-Money Laundering (AML) and Bank Secrecy Act (BSA) compliance program designed to prevent the platform from being used to facilitate money laundering or the financing of terrorist activities.
+Pauv Inc. maintains a comprehensive Anti-Money Laundering (AML) and Bank Secrecy Act (BSA) compliance program designed to prevent the Platform from being used to facilitate money laundering or the financing of terrorist activities.
 
 ## Closed-Loop Risk Mitigation
 
-Pauv's closed-loop ecosystem fundamentally eliminates standard avenues for money laundering and fraud:
+Pauv's closed-loop architecture eliminates the most common avenues for money laundering and fraud by construction:
 
-- **No Peer-to-Peer Transfers** — Users cannot send, gift, or trade USDP or PVs to other users
-- **No Secondary Markets** — All PV trades execute directly against Pauv's automated pricing curve
-- **No External Portability** — USDP and PVs cannot be transferred to external wallets or platforms
-- **Closed-Loop Fiat** — Fiat enters via regulated processors and can only be withdrawn back to the verified user's linked bank account
+- **No Peer-to-Peer Transfers.** Users cannot send, gift, or transfer credits or internal tokens to other users.
+- **No Secondary Markets.** Forecasts are opened and closed only against the Dual Curve Model. There is no order book and no user-to-user matching.
+- **No External Portability.** Credits and internal tokens are database entries, not blockchain assets. They cannot be transferred off the Platform.
+- **Closed-Loop Fiat.** Fiat enters via regulated processors and can only be withdrawn to the same verified bank account the user linked at onboarding.
+- **Sequential Processing.** Every forecast is a single API request processed with database-level row locking. Flash loans, sandwich attacks, MEV extraction, and atomic arbitrage are impossible.
 
 ## Identity Verification (KYC)
 
@@ -20,55 +21,66 @@ Pauv enforces strict Customer Due Diligence (CDD) through our compliance partner
 
 ### Tier 1: Standard KYC
 
-Required before depositing funds or creating a Talent profile:
+Required before depositing funds or opening a forecast:
 
-- Data source verification (name, DOB, address, ID number) against authoritative databases
+- Data-source verification (name, DOB, address, ID number) against authoritative databases
 - SMS verification of your mobile device
 - Real-time AML screening against global watchlists
 
 ### Tier 2: Step-Up KYC
 
-Required for higher-risk activities — includes document verification (government-issued photo ID) and selfie liveness check:
+Required for higher-risk activities. Includes document verification (government-issued photo ID) and selfie liveness check:
 
-- **Talent withdrawals** — Required before any USD can be withdrawn to a bank account
-- **Elevated risk signals** — Triggered automatically when the risk engine detects device anomalies, synthetic identity risk, or low Trust Index scores
+- **Claiming an NPSI profile.** Required before a public figure (or their guardian, in the case of a Minor) can direct the good-faith royalty off-platform.
+- **Elevated risk signals.** Triggered automatically when the risk engine detects device anomalies, synthetic-identity risk, or low Trust Index scores.
+- **Deposit thresholds.** Triggered by unusually large deposits or activity patterns warranting enhanced review.
 
 ## OFAC Screening
 
 Pauv is strictly prohibited from conducting business with individuals, entities, or countries sanctioned by the **Office of Foreign Assets Control (OFAC)**.
 
 - Every user is automatically screened against the OFAC SDN list and global PEP lists
-- Screening is **continuous** — Pauv's user database is scrubbed against daily watchlist updates
+- Screening is **continuous** — user databases are scrubbed against daily watchlist updates
 - If a match is flagged, the account is immediately blocked, balances frozen, and deposit/withdrawal capabilities disabled
 - Required blocking reports are filed with the U.S. Treasury/OFAC within 10 business days
 
 ## Geofencing
 
-Pauv is authorized to operate across the United States through BVNK's Money Transmitter Licenses. The platform is **strictly prohibited to international users**:
+Pauv operates only within the United States. The Platform is **strictly prohibited to international users**:
 
 - All non-US IP addresses are actively blocked
-- Account creation is restricted to US-based devices
+- Account creation is restricted to US-based devices and U.S. bank accounts
 
 ## Transaction Monitoring
 
 Pauv monitors for suspicious activity patterns including:
 
 - Structuring deposits just under reporting thresholds
-- Large fiat deposits followed by immediate withdrawal requests without trading activity
+- Large fiat deposits followed by immediate withdrawal requests without forecasting activity
 - Rapid deposit-and-withdrawal cycles
-- Other red flags specific to the closed-loop model
+- Coordinated round-trip forecasting intended to manipulate an NPSI value
+- Fee-farming or wash-forecasting patterns on the Dual Curve Model
 
 Suspicious Activity Reports (SARs) are filed with FinCEN when warranted.
+
+## Anti-Manipulation Design
+
+Beyond transaction monitoring, the Dual Curve Model itself is designed to be manipulation-resistant:
+
+- **Flat 1.8% fee.** Every forecast, on every leg, pays the same gross-cash fee. This turns theoretical path-dependence attacks on exponential bonding curves into a money-losing proposition.
+- **Early-exit guardrail.** A 5.0% fee on forecasts closed within 10 minutes (FIFO) deters rapid round-trip manipulation while leaving genuine forecasters unaffected.
+- **No counterparty.** Because every forecast settles against a published algorithm, there are no hidden order flows to exploit.
+- **Single-attacker profile.** Centralized Web2 architecture and sequential processing mean the only viable attacker is a real person using their own funds, one request at a time.
 
 ## Record Keeping
 
 | Record Type | Retention Period |
 |-------------|-----------------|
-| KYC/CIP data (names, addresses, DOBs, SSNs, document images) | 5 years after account closure |
-| Transaction logs (deposits, withdrawals, PV trades) | 5 years minimum |
+| KYC/CIP data (names, addresses, DOBs, ID images) | 5 years after account closure |
+| Transaction logs (deposits, forecasts, withdrawals, royalty disbursements) | 5 years minimum |
 | Security | AES-256 encryption, role-based access controls |
 
-All transactions are recorded on Pauv's dual-layer hybrid architecture (PostgreSQL + private blockchain), ensuring an immutable, time-stamped, tamper-proof audit trail.
+All transactions are recorded with tamper-resistant, time-stamped audit logging.
 
 ## MSB Registration
 

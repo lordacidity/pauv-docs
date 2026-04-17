@@ -1,72 +1,122 @@
 ---
 title: Regulatory Framework
-description: "How Pauv's platform and PVs are classified under federal and state regulations."
+description: "How Pauv's Platform and the NPSI are classified under federal and state law."
 ---
 
-This page provides a high-level summary of Pauv's regulatory classification under U.S. federal and state law. Pauv has obtained a formal legal opinion from qualified outside counsel confirming that the platform operates consistent with applicable legal requirements.
+This page summarizes Pauv's regulatory classification at a high level. Pauv operates consistent with applicable federal and state law, supported by legal opinions from qualified outside counsel.
 
-## PVs Are Not Securities
+## Public Sentiment Is Public Domain
 
-PVs have been analyzed under the **Howey test** (the standard framework for determining whether an asset is a "security" under federal law) and **do not** constitute investment contracts or securities.
+Pauv hosts the **Net Public Sentiment Index (NPSI)** — a live, dollar-denominated measure of a public figure's cultural relevance, shaped entirely by forecasting activity. The NPSI is a **derived data product**, similar to a bond rating or a credit score.
+
+How the public perceives a cultural figure is **in the public domain**. It is distinct from the figure's Name, Image, or Likeness, which belongs to that individual. The NPSI quantifies the public's reaction to a figure, not the figure's identity.
+
+Under established precedent (*CBC Distribution and Marketing v. Major League Baseball Advanced Media*, 505 F.3d 818 (8th Cir. 2007)), factual data points about public figures — including measures of cultural trajectory and performance — are in the public domain. Pauv does not "use" any public figure's identity; it indexes the public's reaction to that figure.
+
+<Note>
+  Because public sentiment is public domain, no consent is required to list an NPSI. The claim flow exists solely to direct the good-faith royalty, not to grant permission for listing.
+</Note>
+
+## Forecasts Are Not Securities
+
+Forecasts opened on an NPSI have been analyzed under the **Howey test** (the standard framework for determining whether an instrument is an "investment contract" under federal securities law) and **do not** constitute securities.
 
 ### Key Factors
 
-- **No common enterprise** — PV holders do not pool funds into a business venture. Each PV tracks public sentiment about a specific person, similar to a digital trading card.
-- **No expectation of profits from others' efforts** — PV prices are set by an algorithmic pricing curve based on buy/sell activity, not by managerial decisions. Talents have no obligation to perform or promote to support PV prices.
-- **Collectible nature** — PVs are framed as speculative digital collectibles with entertainment and fan engagement value, not as financial investments. This is consistent with the SEC's 2025 Staff Statement on Meme Coins.
-- **No equity or income rights** — PVs confer no ownership, voting rights, dividends, profit participation, or claims on any person's income or assets.
+- **No common enterprise.** Each NPSI is priced by a deterministic, published algorithm (the Dual Curve Model, DTM 2.3). The mathematical rigidity of the bonding curves removes any "common enterprise" element — the index value is a direct measurement of forecasting activity, not a product of centrally managed returns.
+- **No managerial efforts.** The NPSI value is driven entirely by user forecasting activity. Pauv does not make managerial decisions that affect the value of any NPSI. Public figures have no role in setting, supporting, or promoting their NPSI value.
+- **No ownership or profit participation.** Users do not acquire equity, debt, voting rights, dividend rights, or any interest in a business venture or in any individual.
+- **Signal, not asset.** The NPSI is a measure of public perception, not something users "own" or "hold." Users open and close forecasts — they do not hold tradable assets.
 
-### How PVs Compare to Similar Assets
+### Comparison to Similar Instruments
 
-| Feature | PVs | Meme Coins | Sports Cards | Traditional Securities |
-|---------|-----|------------|--------------|----------------------|
-| Value driven by sentiment/demand | Yes | Yes | Yes | No |
-| Confers ownership rights | No | No | No | Yes |
-| Transferable off-platform | No | Yes | Yes | Yes |
-| Promises of financial returns | No | No | No | Yes |
+| Feature | NPSI Forecasts | Prediction-Market Contracts | Securities |
+|---------|----------------|------------------------------|------------|
+| Binary settlement / event expiry | No | Yes | Varies |
+| Confers ownership or profit rights | No | No | Yes |
+| Value driven by managerial effort | No | No | Yes |
+| Transferable off-platform | No | Varies | Yes |
+| Pricing method | Published bonding-curve algorithm | Event-conditional pricing | Market-driven with issuer performance |
+
+Publishing the DTM 2.3 algorithm is a deliberate strategic choice: the mathematical determinism of the pricing mechanism rebuts the "common enterprise" and "efforts of others" prongs of Howey.
+
+## Not a Prediction Market
+
+Unlike prediction markets (e.g., Kalshi, Polymarket) that settle binary outcomes on defined events, the NPSI is a **continuous, non-expiring signal**. There are:
+
+- No binary outcomes
+- No event-based settlement
+- No expiration dates
+- No counterparty-matched positions
+
+Pauv operates a new category called the **signal market**, distinct from both prediction markets and securities markets.
 
 ## Not Subject to CFTC Registration
 
-Pauv's activity is limited to **fully funded, spot transactions** in PVs using internal USDP credits. The platform does not offer:
+Pauv's activity is limited to forecasts priced by a deterministic bonding curve using internal USD credits. The Platform does not offer:
 
 - Futures, options, swaps, or perpetual contracts
-- Leveraged, margined, or financed transactions
+- Leveraged, margined, or financed forecasts
 - Derivatives of any kind
 
-Therefore, CFTC registration requirements do not apply. Pauv's transparent pricing curve and closed-loop design further mitigate fraud and manipulation risks.
+Therefore, CFTC registration requirements do not apply. The Platform's published pricing algorithm and closed-loop design further mitigate fraud and manipulation risks.
 
 ## FinCEN — Money Services Business
 
 Pauv is registered with FinCEN as a **Money Services Business (MSB)** and maintains a full BSA/AML compliance program.
 
-**USDP** is classified as **closed-loop stored value** — not a convertible virtual currency (CVC). USDP:
+**Credits** are classified as **closed-loop stored value** — not a convertible virtual currency (CVC). Credits:
 
 - Cannot be transferred between users
 - Cannot be sent to external wallets
-- Has no extrinsic monetary value
-- Functions solely as an internal medium for platform transactions
+- Have no extrinsic monetary value
+- Function solely as an internal medium for forecasting
 
-However, because Pauv's fiat-in/fiat-out model involves receiving and transmitting funds on behalf of users, it properly operates as a registered money transmitter.
+Because Pauv's fiat-in / fiat-out model involves receiving and transmitting funds on behalf of users, the Platform operates as a registered money transmitter.
+
+## Name, Image, and Likeness (NIL)
+
+All visual representations of public figures on Pauv are **AI-generated**. Literal photographs (agency-owned headshots or press images) are never used. This is a deliberate compliance choice.
+
+Under the Transformative Use Test, courts have found that synthesized, non-literal depictions are protected "expressive works" rather than commercial appropriations of a person's likeness. Pauv's AI-generated imagery is a stylized representation used to identify an NPSI — itself a public-domain data product — and is not a commercial exploitation of any individual's identity.
+
+## Lanham Act — Non-Endorsement
+
+To prevent any "False Endorsement" claim under the Lanham Act, the Platform's user interface ensures no reasonable consumer would believe a public figure has authorized their NPSI listing:
+
+- Every NPSI profile carries a conspicuous non-endorsement disclaimer.
+- Platform copy avoids language like "Buy," "Invest in," or "Official Profile."
+- All profiles are titled as NPSI profiles, reinforcing that they are derived data products.
+
+The required disclaimer reads:
+
+> *[Name] is not affiliated with Pauv and has not endorsed, sponsored, or authorized this NPSI listing. All imagery is AI-generated. Forecasts reflect public sentiment, not the views of the person indexed.*
+
+## Good-Faith Royalty (MLC Analogue)
+
+The 0.5% good-faith royalty set aside for public figures mirrors the **Mechanical Licensing Collective (MLC)** framework established by the Music Modernization Act. By setting aside royalties in a transparent, audited ledger, Pauv fulfills a duty of care that exceeds the standard for news organizations or fantasy-sports platforms.
+
+Unclaimed royalties are held for the state-mandated dormancy period (typically 3 to 5 years) and then remitted to the applicable State Controller's office under established **escheatment laws**. This structure is supported by precedent in *SEC v. DeSo / BitClout* dispositions, which have recognized the viability of claimable-profile models that use U.S. dollar rails, avoid misappropriation of escrow funds, and maintain transparent public ledgers.
 
 ## State Licensing
 
-Pauv's fiat-in/fiat-out model triggers **money transmitter licensing** requirements in most U.S. states. Pauv is pursuing state-level licensure as required.
+Pauv's fiat-in / fiat-out model triggers **money-transmitter licensing** in most U.S. states. Pauv is pursuing state-level licensure as required.
 
-At the state level, PVs are **not considered securities** in any U.S. jurisdiction because they:
+At the state level, forecasts on an NPSI are **not considered securities** in any U.S. jurisdiction because they:
 
-- Lack ownership rights, dividends, or enterprise-related profit expectations
-- Derive value solely from market sentiment
+- Lack ownership rights, dividend rights, or enterprise-related profit expectations
+- Derive value solely from public sentiment as measured by forecasting activity on a published algorithm
 
 ## Not a Securities Exchange, Broker-Dealer, or ATS
 
-Because PVs are not securities, Pauv does not operate as:
+Because forecasts are not securities, Pauv does not operate as:
 
 - A securities exchange
 - A broker or dealer
 - An alternative trading system (ATS)
 
-Pauv operates a proprietary trading venue for non-security digital collectibles. All orders execute against the continuous linear pricing curve within Pauv's own system — there is no user-to-user matching, bid/ask spread, or linkage to national market systems.
+All forecasts are settled against the Dual Curve Model within Pauv's own system. There is no user-to-user matching, no bid/ask spread, and no linkage to national market systems.
 
 <Note>
-  This summary is for informational purposes only and does not constitute legal advice. Pauv's regulatory analysis is supported by a formal legal opinion from qualified outside counsel (Artaev at Law PLLC, dated February 28, 2026).
+  This summary is for informational purposes only and does not constitute legal advice.
 </Note>

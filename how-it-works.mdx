@@ -1,102 +1,135 @@
 ---
 title: How It Works
-description: "Understand the Pauv platform, PVs, USDP, and the pricing model."
+description: "The NPSI, Positive and Negative Forecasts, and the Dual Curve Model."
 ---
 
-## Overview
+## The Net Public Sentiment Index
 
-Pauv is a **closed-loop digital marketplace** where users can speculate on the public sentiment of real people — Talent — by buying and selling digital collectibles called **PVs**.
+Every public figure on Pauv has an **NPSI** — a live, dollar-denominated measure of their cultural relevance. The value is determined solely by forecasting activity on Pauv. There are no social metrics, no algorithmic feeds, and no external data sources pushed into the index.
 
-All transactions on Pauv happen through an internal credit called **USDP**. You deposit USD, receive USDP, use USDP to trade PVs, and can withdraw your USDP back to USD at any time.
+- **Floor at zero.** No matter how much negative forecasting happens, the NPSI approaches zero asymptotically but never reaches it.
+- **No ceiling.** The NPSI can grow without bound.
+- **Not an asset.** Users do not own the NPSI. It is a measure of public perception, not a financial instrument.
 
-## The Closed-Loop Ecosystem
+When a figure drops a hit, wins a title, or goes viral, users react, forecasts get opened, and the NPSI moves in real time.
 
-Pauv operates as a fully closed system. This is a core design principle that ensures security, compliance, and simplicity:
+## Positive and Negative Forecasts
 
-<CardGroup cols={2}>
-  <Card title="No P2P Transfers" icon="ban">
-    Users cannot send USDP or PVs to other users, wallets, or platforms.
-  </Card>
-  <Card title="No Secondary Markets" icon="shield-halved">
-    All PV trades execute directly against Pauv's algorithmic pricing curve.
-  </Card>
-  <Card title="No External Portability" icon="lock">
-    USDP and PVs cannot leave the Pauv platform.
-  </Card>
-  <Card title="Closed-Loop Fiat" icon="building-columns">
-    USD enters via regulated processors and can only be withdrawn back to your verified bank account.
-  </Card>
-</CardGroup>
+Users interact with Pauv by opening and closing forecasts. A forecast is a directional view on a public figure's cultural relevance, expressed through the NPSI.
 
-## How Funds Flow
+| Forecast Type | What It Means | Effect on NPSI |
+|---------------|---------------|----------------|
+| **Positive Forecast** | The user believes the figure's cultural relevance will rise. | Pulls the NPSI value **up**. |
+| **Negative Forecast** | The user believes the figure's cultural relevance will fall. | Pulls the NPSI value **down**. |
 
 <Steps>
-  <Step title="Deposit USD">
-    You deposit USD from your bank account via ACH or card. Your funds pass through our payment processors (Finix) and security gateway (Soap Payments) with full KYC verification, geofencing, and fraud prevention.
+  <Step title="Spot who's moving">
+    Scan the platform, find a figure whose NPSI you think is under- or overvalued, and form your read.
   </Step>
-  <Step title="Funds Held in Custody">
-    Your USD is held securely in a **For Benefit Of (FBO)** custodial account at Lead Bank via BVNK. Pauv never commingles user funds with company operating funds.
+  <Step title="Open a forecast">
+    Open a Positive Forecast if you think cultural relevance will rise, or a Negative Forecast if you think it will fall. Forecasts settle instantly — no counterparty, no contracts, no outcomes to wait on.
   </Step>
-  <Step title="Receive USDP">
-    Your Pauv account is credited with USDP at a 1:1 ratio ($1 = 1 USDP). USDP is the internal currency you use to trade.
-  </Step>
-  <Step title="Trade PVs">
-    Use your USDP to buy PVs on the Talent Exchange. When you're ready, sell PVs back for USDP at the current algorithmic price.
-  </Step>
-  <Step title="Withdraw">
-    Convert your USDP back to USD and withdraw to your linked bank account. Withdrawals typically take 1–2 business days for ledger-to-blockchain reconciliation.
+  <Step title="Close when ready">
+    The NPSI moves in real time as other users open forecasts. Close your forecast whenever the story shifts.
   </Step>
 </Steps>
 
-## The Linear Pricing Model
+## The Dual Curve Model (DTM 2.3)
 
-Every PV on Pauv uses the same transparent, continuous linear growth formula:
+The **Dual Curve Model** is Pauv's proprietary pricing engine. Every NPSI has two independent curves pushing against each other to determine a single index value:
 
-| Parameter | Value |
-|-----------|-------|
-| **Starting price** | $0.01 |
-| **Price change per PV** | $0.000001 per unit bought or sold |
-| **Formula** | Identical for all Talents |
+| Curve | Side | What Opening a Forecast There Expresses |
+|-------|------|------------------------------------------|
+| Positive | Bullish | "Cultural relevance should go up." |
+| Negative | Bearish | "Cultural relevance should go down." |
 
-- When users **buy** PVs, the price increases.
-- When users **sell** PVs, the price decreases.
+Each curve has its own pool of cash and its own internal price. The two pools are never combined — a dollar committed to the positive curve stays in the positive pool, and a dollar committed to the negative curve stays in the negative pool. The curves are linked only through the NPSI value.
 
-This model ensures:
-- **Constant liquidity** — There is always a price to buy or sell at.
-- **Predictable pricing** — The formula is fully transparent and visible to all users.
-- **No market manipulation** — Prices are set algorithmically, not by hidden order books.
+<CardGroup cols={2}>
+  <Card title="Instant settlement" icon="bolt">
+    No order book. No counterparty matching. Every forecast settles immediately against its curve.
+  </Card>
+  <Card title="Floor guarantee" icon="shield">
+    A softplus function ensures the NPSI can never go negative, no matter how much bearish forecasting happens.
+  </Card>
+  <Card title="Self-correcting" icon="arrows-rotate">
+    If the NPSI drifts from what forecasters believe is accurate, there is an incentive to correct it in either direction.
+  </Card>
+  <Card title="Always solvent" icon="building-columns">
+    Each curve is independently conservative — close proceeds can never exceed open deposits into that curve.
+  </Card>
+</CardGroup>
 
-## Transaction Fees
+### How the NPSI Value Is Calculated
 
-A total **0.50% fee** is applied to every buy or sell order:
+The NPSI is a function of the two curves' internal token prices. Opening a Positive Forecast raises the positive price; opening a Negative Forecast raises the negative price. The NPSI responds to the difference, with a softplus floor to guarantee a non-negative value.
 
-| Recipient | Fee |
-|-----------|-----|
-| **Talent** | 0.25% of each transaction |
-| **Pauv** | 0.25% of each transaction |
+Opening or closing on one curve only affects that curve's state. The two curves are fully independent, linked only through the final NPSI value.
 
-## What PVs Are (and Aren't)
+| Action | Positive Price | Negative Price | NPSI Value |
+|--------|----------------|----------------|------------|
+| Open Positive Forecast | Rises | Unchanged | Rises |
+| Close Positive Forecast | Falls | Unchanged | Falls |
+| Open Negative Forecast | Unchanged | Rises | Falls |
+| Close Negative Forecast | Unchanged | Falls | Rises |
 
-<AccordionGroup>
-  <Accordion title="PVs ARE digital collectibles">
-    PVs are speculative, sentiment-based digital collectibles — similar to trading cards. Their value fluctuates based on market demand and public perception of the Talent.
-  </Accordion>
-  <Accordion title="PVs are NOT equity or stock">
-    PVs do not represent ownership in a person, company, or enterprise. They confer no voting rights, income rights, or managerial authority.
-  </Accordion>
-  <Accordion title="PVs are NOT cryptocurrency">
-    PVs are tracked on a private, hybrid ledger. They cannot be transferred to external wallets, used on public blockchains, or mined.
-  </Accordion>
-  <Accordion title="PVs are NOT redeemable for services">
-    Owning someone's PVs does not entitle you to anything from that Talent — no services, performances, or special treatment.
-  </Accordion>
-</AccordionGroup>
+### Initial Pricing: Elo-Based Comparative Pricing
 
-## Hybrid Ledger Architecture
+When a new NPSI profile is created, its starting value is set through **Elo-Based Comparative Pricing**. The new profile is shown alongside two existing profiles, and participants rank where they think the new one should land — above, between, or below. Iterating thousands of times with random combinations converges on an accurate starting value.
 
-Pauv uses a dual-layer system for maximum security and auditability:
+If the starting value is slightly off at launch, the market self-corrects: forecasting activity pushes the NPSI to where the market believes it belongs.
 
-- **Private Blockchain** — Records immutable, tamper-proof audit trails of all critical financial events (wallet creation, trades, deposits, withdrawals).
-- **PostgreSQL Database** — Handles real-time pricing, order execution, user balances, and platform analytics.
+## Fees
 
-This hybrid approach gives Pauv the speed of a modern trading platform with the auditability and data integrity of blockchain technology.
+Every forecast, whether opening or closing, incurs a flat **1.8%** fee on the gross cash amount.
+
+| Component | Rate | Recipient |
+|-----------|------|-----------|
+| Platform fee | 1.3% | Pauv |
+| Good-faith royalty | 0.5% | Set aside for the public figure |
+| **Total** | **1.8%** | **Split** |
+
+- **Opening a forecast** — The 1.8% fee is deducted from the committed amount; the remaining 98.2% enters the bonding curve.
+- **Closing a forecast** — The curve calculates gross proceeds; the 1.8% fee is deducted from those proceeds, and the user receives the net payout.
+
+A round trip in a quiet index (open then close with no other activity) costs approximately **3.57%** — the compounded effect of paying 1.8% on both legs.
+
+### Early-Exit Guardrail
+
+To discourage short-term manipulation, Pauv may apply an elevated close fee for forecasts closed within 10 minutes of opening:
+
+| Time Since Opening | Close Fee |
+|--------------------|-----------|
+| Less than 10 minutes | 5.0% |
+| 10 minutes or more | 1.8% (standard) |
+
+Implementation uses FIFO: the oldest tokens are closed first, so only the portion of a forecast acquired within the last 10 minutes incurs the elevated rate. Genuine forecasters holding for hours or days are unaffected.
+
+## Closed-Loop Architecture
+
+Pauv operates as a fully closed system. This is a deliberate design choice that eliminates entire categories of manipulation by construction.
+
+<CardGroup cols={2}>
+  <Card title="No peer-to-peer transfers" icon="ban">
+    Credits and internal tokens cannot be sent to other users, wallets, or platforms.
+  </Card>
+  <Card title="No secondary markets" icon="shield-halved">
+    Forecasts are opened and closed only against the Dual Curve Model.
+  </Card>
+  <Card title="No blockchain dependency" icon="lock">
+    Internal tokens are database records, not on-chain assets. They cannot leave Pauv.
+  </Card>
+  <Card title="No leverage or borrowing" icon="building-columns">
+    Users can only commit credits they have deposited. No margin, no lending.
+  </Card>
+</CardGroup>
+
+This architecture makes flash loans, sandwich attacks, MEV extraction, and atomic arbitrage impossible. Every forecast is a single request processed sequentially via database-level row locking.
+
+## Conviction
+
+Alongside the headline NPSI value, Pauv exposes **conviction** — the net dollar imbalance between the two pools (positive pool minus negative pool). Conviction measures capital at stake, while the NPSI value measures how the index is priced. The **conviction ratio** (NPSI value divided by starting value) is a unitless multiple — above 1 is bullish, below 1 is bearish, 1 is neutral.
+
+<Note>
+  Forecasts on the NPSI are not securities, ownership interests, or investment contracts. They are opened and closed against a published algorithm for entertainment and signal purposes only.
+</Note>
