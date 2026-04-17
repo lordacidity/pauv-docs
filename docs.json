@@ -22,8 +22,8 @@
       {
         "group": "Platform",
         "pages": [
-          "platform/usdp-and-funds",
-          "platform/trading-pvs",
+          "platform/forecasting",
+          "platform/credits",
           "platform/for-talent"
         ]
       },
@@ -75,6 +75,6 @@
     },
     "decoration": "gradient"
   },
-  "description": "The Market for Human Potential",
+  "description": "The world's first real-time index of public sentiment.",
   "css": "/custom.css"
 }
