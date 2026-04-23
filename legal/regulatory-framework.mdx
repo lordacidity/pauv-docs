@@ -23,7 +23,7 @@ Forecasts opened on an NPSI have been analyzed under the **Howey test** (the sta
 
 ### Key Factors
 
-- **No common enterprise.** Each NPSI is priced by a deterministic, published algorithm (the Dual Curve Model, DTM 2.3). The mathematical rigidity of the bonding curves removes any "common enterprise" element: the index value is a direct measurement of forecasting activity, not a product of centrally managed returns.
+- **No common enterprise.** Each NPSI is priced by a deterministic, published algorithm (DTM 4.0, a single-curve softplus bonding model). The mathematical rigidity of the bonding curve removes any "common enterprise" element: the index value is a direct measurement of forecasting activity, not a product of centrally managed returns.
 - **No managerial efforts.** The NPSI value is driven entirely by user forecasting activity. Pauv does not make managerial decisions that affect the value of any NPSI. Public figures have no role in setting, supporting, or promoting their NPSI value.
 - **No ownership or profit participation.** Users do not acquire equity, debt, voting rights, dividend rights, or any interest in a business venture or in any individual.
 - **Signal, not asset.** The NPSI is a measure of public perception, not something users "own" or "hold." Users open and close forecasts; they do not hold tradable assets.
@@ -38,7 +38,7 @@ Forecasts opened on an NPSI have been analyzed under the **Howey test** (the sta
 | Transferable off-platform | No | Varies | Yes |
 | Pricing method | Published bonding-curve algorithm | Event-conditional pricing | Market-driven with issuer performance |
 
-Publishing the DTM 2.3 algorithm is a deliberate strategic choice: the mathematical determinism of the pricing mechanism rebuts the "common enterprise" and "efforts of others" prongs of Howey.
+Publishing the DTM 4.0 algorithm is a deliberate strategic choice: the mathematical determinism of the pricing mechanism rebuts the "common enterprise" and "efforts of others" prongs of Howey.
 
 ## Not a Prediction Market
 
@@ -58,6 +58,8 @@ Pauv's activity is limited to forecasts priced by a deterministic bonding curve 
 - Futures, options, swaps, or perpetual contracts
 - Leveraged, margined, or financed forecasts
 - Derivatives of any kind
+
+Negative Forecasts under DTM 4.0 are not short sales of any security, commodity, or asset. No external instrument is borrowed or sold; the Negative Forecast is fully collateralized on-platform by an escrow funded entirely from the user's net stake and capital extracted from the same bonding curve. The automatic 95%-escrow liquidation is a deterministic closing rule implemented in the published algorithm, not a margin call or lender recall.
 
 Therefore, CFTC registration requirements do not apply. The Platform's published pricing algorithm and closed-loop design further mitigate fraud and manipulation risks.
 
@@ -115,7 +117,7 @@ Because forecasts are not securities, Pauv does not operate as:
 - A broker or dealer
 - An alternative trading system (ATS)
 
-All forecasts are settled against the Dual Curve Model within Pauv's own system. There is no user-to-user matching, no bid/ask spread, and no linkage to national market systems.
+All forecasts are settled against DTM 4.0 within Pauv's own system. There is no user-to-user matching, no bid/ask spread, and no linkage to national market systems.
 
 <Note>
   This summary is for informational purposes only and does not constitute legal advice.

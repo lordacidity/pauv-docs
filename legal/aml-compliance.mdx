@@ -10,7 +10,7 @@ Pauv Inc. maintains a comprehensive Anti-Money Laundering (AML) and Bank Secrecy
 Pauv's closed-loop architecture eliminates the most common avenues for money laundering and fraud by construction:
 
 - **No Peer-to-Peer Transfers.** Users cannot send, gift, or transfer points or internal tokens to other users.
-- **No Secondary Markets.** Forecasts are opened and closed only against the Dual Curve Model. There is no order book and no user-to-user matching.
+- **No Secondary Markets.** Forecasts are opened and closed only against DTM 4.0. There is no order book and no user-to-user matching.
 - **No External Portability.** Points and internal tokens are database entries, not blockchain assets. They cannot be transferred off the Platform.
 - **Closed-Loop Fiat.** Fiat enters via regulated processors and can only be withdrawn to the same verified bank account the user linked at onboarding.
 - **Sequential Processing.** Every forecast is a single API request processed with database-level row locking. Flash loans, sandwich attacks, MEV extraction, and atomic arbitrage are impossible.
@@ -59,16 +59,18 @@ Pauv monitors for suspicious activity patterns including:
 - Large fiat deposits followed by immediate withdrawal requests without forecasting activity
 - Rapid deposit-and-withdrawal cycles
 - Coordinated round-trip forecasting intended to manipulate an NPSI value
-- Fee-farming or wash-forecasting patterns on the Dual Curve Model
+- Fee-farming or wash-forecasting patterns on DTM 4.0
+- Coordinated activity designed to trigger automatic liquidation of another user's Negative Forecast
 
 Suspicious Activity Reports (SARs) are filed with FinCEN when warranted.
 
 ## Anti-Manipulation Design
 
-Beyond transaction monitoring, the Dual Curve Model itself is designed to be manipulation-resistant:
+Beyond transaction monitoring, DTM 4.0 itself is designed to be manipulation-resistant:
 
-- **Flat 1.8% fee.** Every forecast, on every leg, pays the same gross-cash fee. This turns theoretical path-dependence attacks on exponential bonding curves into a money-losing proposition.
-- **Early-exit guardrail.** A 5.0% fee on forecasts closed within 10 minutes (FIFO) deters rapid round-trip manipulation while leaving genuine forecasters unaffected.
+- **Flat 1.8% fee.** Every forecast, on every leg, pays the same gross-cash fee. This turns theoretical path-dependence attacks on bonding curves into a money-losing proposition.
+- **Deterministic pricing.** Every price move is computed from a published closed-form integral, so cash conservation and reserve sufficiency are enforced invariantly after every transaction.
+- **Escrow-backed Negative Forecasts.** Negative Forecasts are fully collateralized on-platform, with no borrowing, no margin, and no path for a Negative Forecaster to owe more than their net stake.
 - **No counterparty.** Because every forecast settles against a published algorithm, there are no hidden order flows to exploit.
 - **Single-attacker profile.** Centralized Web2 architecture and sequential processing mean the only viable attacker is a real person using their own funds, one request at a time.
 

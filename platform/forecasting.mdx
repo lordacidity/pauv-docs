@@ -5,7 +5,7 @@ description: "How to open and close Positive and Negative Forecasts on Pauv."
 
 ## What Is a Forecast?
 
-A **forecast** is a directional view on a public figure's cultural relevance, expressed through their NPSI. You are not buying, selling, or owning anything. You are opening a position against Pauv's Dual Curve Model that moves the live index value up or down.
+A **forecast** is a directional view on a public figure's cultural relevance, expressed through their NPSI. You are not buying, selling, or owning anything. You are opening a position against Pauv's pricing engine, DTM 4.0, that moves the live index value up or down.
 
 | Forecast Type | What It Means |
 |---------------|---------------|
@@ -13,7 +13,7 @@ A **forecast** is a directional view on a public figure's cultural relevance, ex
 | **Negative Forecast** | You believe the figure's cultural relevance will fall. Pulls the NPSI down. |
 
 <Warning>
-  Forecasts are not securities, ownership interests, investment contracts, or wagers on a binary event. They are continuous, directional signals priced by the Dual Curve Model for entertainment and engagement purposes only.
+  Forecasts are not securities, ownership interests, investment contracts, or wagers on a binary event. They are continuous, directional signals priced by DTM 4.0 for entertainment and engagement purposes only.
 </Warning>
 
 ## Opening a Forecast
@@ -26,18 +26,41 @@ A **forecast** is a directional view on a public figure's cultural relevance, ex
     Decide whether you think the NPSI is undervalued (open a Positive Forecast) or overvalued (open a Negative Forecast).
   </Step>
   <Step title="Commit points">
-    Enter the amount of points (1 point = $1 USD) you want to commit. The 1.8% fee is deducted first, and the remaining 98.2% enters the appropriate curve.
+    Enter the amount of points (1 point = $1 USD) you want to commit. The 1.8% fee is deducted first, and the remaining 98.2% enters the curve as your net stake.
   </Step>
   <Step title="Settlement is instant">
-    The Dual Curve Model settles your forecast immediately. There is no order book, no counterparty, and no waiting.
+    DTM 4.0 settles your forecast immediately. There is no order book, no counterparty, and no waiting.
   </Step>
 </Steps>
 
+## How Positive Forecasts Work
+
+A Positive Forecast is a **long position** on the NPSI. Your net stake enters the curve and raises Q, the curve's state variable. You receive an internal token position sized by the curve's integral between the old and new Q.
+
+When you close, your tokens are reversed back down the curve and the proceeds are returned as points. If the NPSI rose while you held the position, you receive more than you committed; if it fell, you receive less.
+
+## How Negative Forecasts Work
+
+A Negative Forecast is an **escrow-backed short position** on the NPSI. No tokens are borrowed from other users. Instead:
+
+1. Your net stake is matched dollar-for-dollar by an equal amount extracted from the curve.
+2. Both amounts are held in an **escrow** equal to twice your net stake.
+3. The extraction lowers Q, which lowers the NPSI.
+
+When you close, the escrow is used to buy the same number of tokens back along the curve. Whatever remains of the escrow after the buy-back is returned to you as your net proceeds, minus the 1.8% fee.
+
+- If the NPSI fell: the buy-back costs less than your net stake. You receive more than you committed.
+- If the NPSI rose: the buy-back costs more than your net stake. You receive less — possibly zero.
+
+<Warning>
+  **Liquidation risk.** A Negative Forecast is automatically closed if its buy-back cost reaches **95% of its escrow**. At that point your return is zero — the full escrow is consumed buying the tokens back. You cannot lose more than your net stake, but you can lose all of it in a sharp adverse move of the NPSI. Size Negative Forecasts accordingly.
+</Warning>
+
 ## Closing a Forecast
 
-When you are ready to exit, close your forecast. The internal tokens representing your forecast are returned to the curve, and the curve calculates your gross proceeds. The 1.8% fee is deducted, and you receive the net payout in points.
+When you are ready to exit, close your forecast. For a Positive Forecast, your tokens are sold back to the curve. For a Negative Forecast, the escrow buys your tokens back from the curve. DTM 4.0 calculates your gross proceeds, the 1.8% fee is deducted, and you receive the net payout in points.
 
-If you open a forecast and immediately close it with no other activity, you receive exactly your original amount in gross proceeds, minus the fees on each leg.
+If you open a forecast and immediately close it with no other activity, you receive approximately your original amount in gross proceeds, minus the fees on each leg.
 
 ## Fees
 
@@ -48,19 +71,19 @@ Every open and every close incurs a **1.8%** fee on the gross cash amount:
 | Platform fee | 1.3% | Pauv |
 | Good-faith royalty | 0.5% | Set aside for the public figure |
 
-See [How It Works](/how-it-works#fees) for full detail, including the optional early-exit guardrail for forecasts closed within 10 minutes.
+See [How It Works](/how-it-works#fees) for full detail.
 
 ## Why Both Directions Matter
 
-Prior platforms that tried to quantify attention on people (BitClout and Friend.tech among them) offered only one direction. That made their indices one-sided and manipulable. Pauv's Dual Curve Model supports both Positive and Negative Forecasts, producing a more accurate, self-correcting signal. When the NPSI drifts away from what the market believes is accurate, there is an incentive to push it back in either direction.
+Prior platforms that tried to quantify attention on people (BitClout and Friend.tech among them) offered only one direction. That made their indices one-sided and manipulable. DTM 4.0 runs Positive and Negative Forecasts on the same curve in opposite directions, producing a more accurate, self-correcting signal. When the NPSI drifts away from what the market believes is accurate, there is an incentive to push it back in either direction.
 
 ## Important Rules
 
 - **No peer-to-peer transfers.** Points and internal tokens cannot be sent to other users or external wallets.
 - **No off-platform trading.** Internal tokens are database records, not blockchain assets. They cannot be moved off Pauv.
-- **No shorting in the traditional sense.** A Negative Forecast is a directional signal on the negative curve, not a borrowed-asset short position.
-- **No leverage.** You can only commit points you have deposited. There is no margin and no lending.
-- **Volatility.** The NPSI can move sharply. A Negative Forecast does not protect you from Positive Forecast momentum on the same figure.
+- **No borrowing.** Negative Forecasts are fully collateralized by escrow. Nothing is borrowed from other users, and you can never owe more than your net stake.
+- **No leverage.** You can only commit points you have deposited. There is no margin.
+- **Volatility.** The NPSI can move sharply. A Negative Forecast can be auto-liquidated at zero return if the NPSI rises enough. A Positive Forecast can lose most of its value if the NPSI falls.
 
 ## Required Disclosures
 

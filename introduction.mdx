@@ -6,17 +6,17 @@ description: "Core concepts, key features, and how everything fits together on P
 ## Core Concepts
 
 - **NPSI (Net Public Sentiment Index)**: A live, dollar-denominated measure of a public figure's cultural relevance. Every public figure on Pauv has one. The NPSI is shaped entirely by forecasting activity.
-- **Positive Forecast**: A forecast opened on the positive curve, indicating the user believes the figure's cultural relevance will rise. Pulls the NPSI up.
-- **Negative Forecast**: A forecast opened on the negative curve, indicating the user believes the figure's cultural relevance will fall. Pulls the NPSI down.
-- **Dual Curve Model (DTM 2.3)**: Pauv's proprietary pricing engine. Two independent bonding curves whose interaction determines the live NPSI value. Settles every forecast instantly with no counterparty.
+- **Positive Forecast**: A long position on the NPSI, indicating the user believes the figure's cultural relevance will rise. Pulls the NPSI up.
+- **Negative Forecast**: An escrow-backed short position on the NPSI, indicating the user believes the figure's cultural relevance will fall. Pulls the NPSI down. Automatically closed if the NPSI rises enough that the buy-back cost reaches 95% of the position's escrow.
+- **DTM 4.0**: Pauv's proprietary pricing engine. A single continuous bonding curve with a softplus price floor, driven in opposite directions by Positive and Negative Forecasts. Settles every forecast instantly with no counterparty.
 - **Good-faith royalty**: 0.5% of every forecast transaction, set aside for the public figure whose NPSI is being forecasted. Claimable, donatable to a verified 501(c)(3), or escheated to the state.
 - **Points**: Internal USD-denominated ledger balance used to open forecasts on Pauv. 1 point = $1 USD. Points have no value outside of Pauv and cannot be transferred to other users.
 
 ## Key Features
 
 - **Continuous signal**: The NPSI is live and always on. It has a floor at zero and no ceiling, moving in real time as users open and close forecasts.
-- **Instant settlement**: Every forecast is priced and settled instantly by the Dual Curve Model. No order book, no counterparty matching, no liquidity requirements.
-- **Two-sided expression**: Users can forecast that cultural relevance will rise (Positive) or fall (Negative). Both directions produce a self-correcting signal.
+- **Instant settlement**: Every forecast is priced and settled instantly by DTM 4.0. No order book, no counterparty matching, no liquidity requirements.
+- **Two-sided expression**: Users can forecast that cultural relevance will rise (Positive) or fall (Negative). Both directions drive the same curve in opposite directions, producing a self-correcting signal.
 - **Closed-loop platform**: Points and internal tokens cannot leave Pauv. All activity happens inside a single, regulated environment.
 - **Bank-grade custody**: User funds are held in For Benefit Of (FBO) custodial accounts at regulated partner banks. Pauv never commingles user funds with operating funds.
 - **MSB-registered**: Pauv is a registered Money Services Business with full KYC and AML compliance.

@@ -26,13 +26,15 @@ Pauv is the world's first real-time index of public sentiment. The Platform host
 - **Not a financial instrument.** An NPSI is a derived data product, similar to a bond rating or credit score. Forecasts opened on an NPSI do not represent ownership, equity, debt, profit participation, voting rights, rights to services, or any claim on any person or enterprise.
 - **Signal market.** Pauv occupies a category it calls the signal market, distinct from prediction markets (binary settlement) and securities markets (ownership).
 
-## 4. Forecasts and the Dual Curve Model
+## 4. Forecasts and DTM 4.0
 
-- **Forecasts.** A forecast is a directional view on an NPSI expressed through Pauv's proprietary Dual Curve Model (DTM 2.3). A **Positive Forecast** pulls the NPSI up; a **Negative Forecast** pulls it down.
-- **No counterparty matching.** All forecasts settle instantly against the Dual Curve Model. There is no order book, no bid/ask, no secondary market, and no user-to-user matching.
+- **Forecasts.** A forecast is a directional view on an NPSI expressed through Pauv's proprietary pricing engine, **DTM 4.0**, a single-curve bonding model with a softplus price floor. A **Positive Forecast** (long) pulls the NPSI up; a **Negative Forecast** (escrow-backed short) pulls it down.
+- **Negative Forecast liquidation.** Negative Forecasts are fully collateralized by an on-platform escrow equal to twice the user's net stake. A Negative Forecast is automatically closed if the cost to buy back its tokens reaches 95% of its escrow; at that point the user's return is zero. A user cannot lose more than the net stake committed to a Negative Forecast, but may lose all of it in a sharp adverse move of the NPSI.
+- **No counterparty matching.** All forecasts settle instantly against DTM 4.0. There is no order book, no bid/ask, no secondary market, and no user-to-user matching.
 - **No ownership.** Opening a forecast does not give you ownership of the NPSI, the public figure, or any enterprise. The NPSI is a signal, not an asset.
-- **Internal tokens.** The Dual Curve Model uses internal token accounting, but users do not directly interact with tokens. Tokens are database records; they are not cryptocurrency, not transferable, and have no value outside the Platform.
-- **Algorithmic pricing.** NPSI values are determined solely by forecasting activity through the published DTM 2.3 algorithm. Initial values are set through Elo-Based Comparative Pricing.
+- **No borrowing; no leverage.** Negative Forecasts do not borrow tokens or funds from other users. Both legs of the escrow originate from the user's net stake and capital extracted from the curve itself. Pauv does not offer margin, lending, or leveraged forecasts.
+- **Internal tokens.** DTM 4.0 uses internal token accounting, but users do not directly interact with tokens. Tokens are database records; they are not cryptocurrency, not transferable, and have no value outside the Platform.
+- **Algorithmic pricing.** NPSI values are determined solely by forecasting activity through the published DTM 4.0 algorithm. Initial values are set through Elo-Based Comparative Pricing.
 
 ## 5. Points and Fiat Transactions
 
@@ -51,9 +53,8 @@ Pauv is a registered Money Services Business (MSB) with FinCEN. To comply with t
 
 ## 7. Fees
 
-- **Standard fee.** Every forecast (open or close) incurs a total fee of **1.8%** on the gross cash amount: **1.3%** to Pauv and **0.5%** to a good-faith royalty set aside for the public figure associated with the NPSI.
-- **Early-exit guardrail.** Pauv may apply an elevated close fee of **5.0%** to forecasts closed within 10 minutes of opening, using FIFO accounting. The standard 1.8% close fee applies to tokens held for 10 minutes or more.
-- **Fee isolation.** Fees are collected into a separate treasury ledger and do not enter either bonding curve. Fees do not affect the NPSI value or pricing math.
+- **Standard fee.** Every forecast (open or close) incurs a total fee of **1.8%** on the gross cash amount: **1.3%** to Pauv and **0.5%** to a good-faith royalty set aside for the public figure associated with the NPSI. The same 1.8% rate applies to the residual escrow returned on a closed or liquidated Negative Forecast.
+- **Fee isolation.** Fees are collected into a separate treasury ledger and do not enter the bonding curve. Fees do not affect the NPSI value or pricing math.
 - **Round-trip cost.** A user who opens and immediately closes a forecast pays approximately 3.57% in total fees, the compounded effect of paying 1.8% on both legs.
 
 ## 8. Good-Faith Royalty and Claim System
@@ -79,6 +80,7 @@ You agree not to:
 
 - **Not an investment.** Forecasts are opened for entertainment and signal purposes. Pauv does not provide financial, tax, legal, or investment advice.
 - **NPSI movement.** The NPSI can move sharply in either direction based on forecasting activity. You can lose some or all of the points committed to a forecast.
+- **Automatic liquidation of Negative Forecasts.** A Negative Forecast is automatically closed when the cost to buy back its tokens reaches 95% of its escrow. You acknowledge that a sharp upward move of the NPSI can trigger this liquidation with no advance notice, resulting in a total loss of the net stake committed to that Negative Forecast.
 - **AI-generated imagery.** All visual representations of public figures on the Platform are AI-generated, not literal photographs. Imagery is a stylized representation intended to identify the NPSI, not to depict the individual.
 - **Interest on custodial float.** Funds held in custodial accounts may earn interest. Any such earnings are the sole property of Pauv Inc.
 - **"As is" service.** The Platform is provided "as is" and "as available" without warranties of any kind.
